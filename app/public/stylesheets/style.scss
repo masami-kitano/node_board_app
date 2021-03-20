@@ -1,0 +1,51 @@
+@import 'reset';
+
+.header {
+    background: #333;
+    padding: 0 1rem;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.375rem;
+    color: #fff;
+    ul {
+        display: flex;
+        li {
+            padding-left: 1rem;
+        }
+    }
+}
+
+.form {
+    margin: 3.125rem auto 0;
+    max-width: 25rem;
+    .form-item {
+        margin-bottom: 1.5625rem;
+        label {
+            display: block;
+            margin-bottom: .625rem;
+        }
+        input {
+            width: 100%;
+            padding: .5rem;
+            border: 1px solid #333;
+        }
+    }
+    input[type=submit] {
+        padding: 1rem;
+        border-radius: .625rem;
+        border: 1px solid #096fc8;
+        background: #096fc8;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        &:hover {
+            transition: background-color 0.3s ease;
+            background: #fff;
+            color: #096fc8;
+        }
+    }
+}

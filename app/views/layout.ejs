@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <% if ( typeof title !== 'undefined' ) { %>
+            <%= title %>
+        <% } else {%>
+            NodeApp
+        <% } %>
+    </title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <h1><a href="/">NodeApp</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/post/index">みんなの投稿</a></li>
+                    <li><a href="/post/create">投稿を作成</a></li>
+                    <% if ( !locals.isLoggedIn) { %>
+                        <li><a href="/users/login">Login</a></li>
+                        <li><a href="/users/register">Register</a></li>
+                    <% } else {%>
+                        <li><%= locals.user %></li>
+                        <li>
+                            <form action="/users/logout" method="POST">
+                                <input type="submit" value="Logout">
+                            </form>
+                        </li>
+                    <% } %>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+</body>
+
+</html>
