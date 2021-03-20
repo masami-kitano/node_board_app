@@ -12,7 +12,9 @@
                 </div>
                 <input type="submit" value="login">
                 <% if ( message && message.length !== 0 ) { %>
-                    <%= message %>
+                    <div class="error-msg">
+                        <p><%= message %></p>
+                    </div>
                 <% } %>
             </form>
         </div>

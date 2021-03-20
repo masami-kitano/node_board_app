@@ -14,7 +14,7 @@ module.exports = {
         jwt.verify(accessToken, 'secret', (err, user) => {
             if (err) {
                 console.log(err);
-                res.redirect('users/login');
+                res.redirect('/users/login');
             } else {
                 req.user = user;
                 next();

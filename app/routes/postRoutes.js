@@ -5,6 +5,6 @@ const router = express.Router();
 const postController = require('../controllers/postController');
 const auth = require('../lib/jwt');
 
-router.get('/index', auth.verifyToken, postController.index);
+router.get('/', auth.verifyToken, postController.index);
 
 module.exports = router;

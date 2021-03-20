@@ -494,6 +494,17 @@ template {
   padding-left: 1rem;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 1rem 1rem 0;
+  text-align: center;
+}
+
+.container h2 {
+  font-size: 1.875rem;
+}
+
 .form {
   margin: 3.125rem auto 0;
   max-width: 25rem;
@@ -529,5 +540,18 @@ template {
   transition: background-color 0.3s ease;
   background: #fff;
   color: #096fc8;
+}
+
+.error-msg {
+  background-color: #f8d7da;
+  border-radius: .625rem;
+  border-color: #f5c6cb;
+  color: #721c24;
+  margin: 1rem 0;
+  padding: .75rem 1.25rem;
+}
+
+.error-msg p {
+  line-height: 1.5;
 }
 /*# sourceMappingURL=style.css.map */

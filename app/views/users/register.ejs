@@ -3,9 +3,11 @@
         <div class="form register-form">
             <% const errorMsgs = locals.errorMsg || {} %>
             <% if ( locals.errorMsg ) { %>
-                <% errorMsgs.forEach( errorMsg => { %>
-                    <%= errorMsg %>
-                <% }); %>
+                <div class="error-msg">
+                    <% errorMsgs.forEach( errorMsg => { %>
+                        <p><%= errorMsg %></p>
+                    <% }); %>
+                </div>
             <% } %>
             <% const currentUser = locals.currentUser || {} %>
             <form action="/users/create" method="post">

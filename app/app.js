@@ -25,7 +25,7 @@ app.use(
         secret: 'secret_passcode',
         resave: false,
         saveUninitialized: false,
-        cookie: { maxAge: 10 * 1000 },
+        cookie: { maxAge: 1000 * 60 * 30 },
     })
 );
 app.use(...accountControl.initialize());

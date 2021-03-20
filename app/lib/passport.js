@@ -78,7 +78,7 @@ const initialize = () => {
 };
 const authenticate = () => {
     return passport.authenticate('local-Strategy', {
-        successRedirect: '/post/index',
+        successRedirect: '/post/',
         failureRedirect: '/users/login',
     });
 };
