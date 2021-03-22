@@ -1,0 +1,22 @@
+<div class="login">
+    <div class="login-inner">
+        <div class="form login-form">
+            <form action="/users/login" method="post">
+                <div class="form-item">
+                    <label>email</label>
+                    <input type="email" name="email" autofocus required>
+                </div>
+                <div class="form-item">
+                    <label>password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <input type="submit" value="login">
+                <% if ( message && message.length !== 0 ) { %>
+                    <div class="error-msg">
+                        <p><%= message %></p>
+                    </div>
+                <% } %>
+            </form>
+        </div>
+    </div>
+</div>
