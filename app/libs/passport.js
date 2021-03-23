@@ -47,7 +47,7 @@ passport.use(
                 return done(
                     null,
                     false,
-                    req.flash('error', 'ユーザー名またはパスワードが違います。s')
+                    req.flash('error', 'ユーザー名またはパスワードが違います。')
                 );
             }
         }
