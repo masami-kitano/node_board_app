@@ -1,10 +1,13 @@
 'use strict';
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const createError = require('http-errors');
 const express = require('express');
 const app = express();
-const accountControl = require('./lib/passport');
+const accountControl = require('./libs/passport');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
@@ -23,7 +26,7 @@ app.use(express.static('public'));
 // セッション
 app.use(
     session({
-        secret: 'secret_passcode',
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         cookie: { maxAge: 1000 * 60 * 30 },
