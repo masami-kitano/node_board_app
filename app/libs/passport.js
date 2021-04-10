@@ -34,6 +34,7 @@ passport.use(
 
                 if (await bcrypt.compare(password, user.password)) {
                     req.session.username = user.username;
+                    req.session.userId = user.id;
                     return done(null, user.email);
                 } else {
                     return done(
@@ -61,6 +62,7 @@ const initialize = () => {
         function(req, res, next) {
             if (req.user) {
                 res.locals.user = req.user.username;
+                res.locals.userId = req.user.id;
                 res.locals.isLoggedIn = true;
             } else {
                 res.locals.user = 'ゲストユーザー';
@@ -72,7 +74,7 @@ const initialize = () => {
 };
 const authenticate = () => {
     return passport.authenticate('local-Strategy', {
-        successRedirect: '/post/',
+        successRedirect: '/posts/',
         failureRedirect: '/users/login',
     });
 };

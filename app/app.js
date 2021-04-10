@@ -9,6 +9,7 @@ const express = require('express');
 const app = express();
 const accountControl = require('./libs/passport');
 const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
 const logger = require('morgan');
 const session = require('express-session');
 const flash = require('express-flash');
@@ -16,6 +17,13 @@ const layouts = require('express-ejs-layouts');
 const indexRouter = require('./routes/index');
 
 app.set('view engine', 'ejs');
+
+app.use(
+    methodOverride('_method', {
+        methods: ['POST', 'GET']
+    })
+);
+
 app.use(layouts);
 app.use(flash());
 app.use(logger('dev'));

@@ -234,13 +234,13 @@ textarea {
 /**
  * Reset radio and checkbox appearance to preserve their look in iOS.
  */
-[type="checkbox"] {
+[type=checkbox] {
   -webkit-appearance: checkbox;
   -moz-appearance: checkbox;
        appearance: checkbox;
 }
 
-[type="radio"] {
+[type=radio] {
   -webkit-appearance: radio;
   -moz-appearance: radio;
        appearance: radio;
@@ -270,9 +270,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type=button],
+[type=reset],
+[type=submit] {
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -280,9 +280,9 @@ button,
 }
 
 button[disabled],
-[type="button"][disabled],
-[type="reset"][disabled],
-[type="submit"][disabled] {
+[type=button][disabled],
+[type=reset][disabled],
+[type=submit][disabled] {
   cursor: default;
 }
 
@@ -290,9 +290,9 @@ button[disabled],
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -301,9 +301,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -366,15 +366,15 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
 /**
  * 1. Correct the outline style in Safari.
  */
-[type="search"] {
+[type=search] {
   outline-offset: -2px;
   /* 1 */
 }
@@ -382,7 +382,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type="search"]::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -483,13 +483,11 @@ template {
   height: 4.375rem;
   color: #fff;
 }
-
 .header-inner ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .header-inner ul li {
   padding-left: 1rem;
 }
@@ -500,7 +498,6 @@ template {
   padding: 1rem 1rem 0;
   text-align: center;
 }
-
 .container h2 {
   font-size: 1.875rem;
 }
@@ -509,32 +506,27 @@ template {
   margin: 3.125rem auto 0;
   max-width: 25rem;
 }
-
 .form .form-item {
   margin-bottom: 1.5625rem;
 }
-
 .form .form-item label {
   display: block;
-  margin-bottom: .625rem;
+  margin-bottom: 0.625rem;
 }
-
-.form .form-item input {
+.form .form-item input, .form .form-item textarea {
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   border: 1px solid #333;
 }
-
 .form input[type=submit] {
   padding: 1rem;
-  border-radius: .625rem;
+  border-radius: 0.625rem;
   border: 1px solid #096fc8;
   background: #096fc8;
   width: 100%;
   text-align: center;
   color: #fff;
 }
-
 .form input[type=submit]:hover {
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
@@ -544,14 +536,59 @@ template {
 
 .error-msg {
   background-color: #f8d7da;
-  border-radius: .625rem;
+  border-radius: 0.625rem;
   border-color: #f5c6cb;
   color: #721c24;
   margin: 1rem 0;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
 }
-
 .error-msg p {
   line-height: 1.5;
 }
-/*# sourceMappingURL=style.css.map */
+
+.post-wrapper {
+  border: 1px solid #ccc7c7;
+  color: #333;
+  margin: 1rem 0;
+  padding: 1rem;
+  text-align: left;
+}
+.post-wrapper .post-title {
+  font-size: 1.25rem;
+}
+.post-wrapper .post-content {
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+.post-wrapper .user-name {
+  margin-top: 1rem;
+}
+.post-wrapper .post-btn-wrapper {
+  margin-top: 1rem;
+  color: #fff;
+}
+.post-wrapper .post-btn-wrapper .post-btn, .post-wrapper .post-btn-wrapper .post-delete-btn, .post-wrapper .post-btn-wrapper .post-edit-btn {
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.7rem;
+}
+.post-wrapper .post-btn-wrapper .post-edit-btn {
+  background-color: #579fdd;
+  border: 1px solid #579fdd;
+}
+.post-wrapper .post-btn-wrapper .post-edit-btn:hover {
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  background-color: #fff;
+  color: #579fdd;
+}
+.post-wrapper .post-btn-wrapper .post-delete-btn {
+  background-color: #d17373;
+  border: 1px solid #d17373;
+}
+.post-wrapper .post-btn-wrapper .post-delete-btn:hover {
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  background-color: #fff;
+  color: #d17373;
+}/*# sourceMappingURL=style.css.map */

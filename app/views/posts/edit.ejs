@@ -1,0 +1,27 @@
+<div class="post-new">
+    <div class="post-new-inner">
+        <div class="form post-new-form">
+            <% const errorMsgs = locals.errorMsg || {} %>
+            <% if ( locals.errorMsg ) { %>
+                <div class="error-msg">
+                    <% errorMsgs.forEach( errorMsg => { %>
+                        <p><%= errorMsg %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+            <% const currentPost = locals.currentPost || {} %>
+            <form action="<%=`/posts/${currentPost.id}/update?_method=PUT`%>" method="POST">
+                <div class="form-item">
+                    <label>タイトル</label>
+                    <input type="text" name="title" value="<%= currentPost.title %>">
+                </div>
+                <div class="form-item">
+                    <label>コンテンツ</label>
+                    <textarea name="content" cols="30" rows="10"><%= currentPost.content %></textarea>
+                </div>
+                <input type="hidden" name="_method" value="PUT">
+                <input type="submit" value="編集完了">
+            </form>
+        </div>
+    </div>
+</div>
