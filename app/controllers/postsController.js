@@ -5,10 +5,8 @@ const User = require('../models').User;
 
 module.exports = {
     index: async (req, res, next) => {
-        const allPosts = await Post.findAll();
-        const allUsers = await User.findAll();
+        const allPosts = await Post.findAll({ include: User });
         res.locals.posts = allPosts;
-        res.locals.users = allUsers;
         next();
     },
     indexView: (req, res) => {

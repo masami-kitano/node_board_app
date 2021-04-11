@@ -4,11 +4,7 @@
         <div class="post-wrapper">
             <div class="post-title"><%= post.title %></div>
             <div class="post-content"><%= post.content %></div>
-            <% users.forEach(user => { %>
-                <% if ( post.UserId === user.id) { %>
-                    <div class="user-name">投稿者：<%= user.username %></div>
-                    <% } %>
-                <% }); %>
+            <div class="user-name">投稿者：<%= post.User.username %></div>
             <% if ( post.UserId === locals.userId ) { %>
                 <div class="post-btn-wrapper">
                     <a href="<%= `${post.id}/edit` %>" class="post-edit-btn">編集</a>
