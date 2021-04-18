@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 /* Reset box-model and set borders */
 /* ============================================ */
@@ -513,7 +514,8 @@ template {
   display: block;
   margin-bottom: 0.625rem;
 }
-.form .form-item input, .form .form-item textarea {
+.form .form-item input,
+.form .form-item textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #333;
@@ -562,6 +564,28 @@ template {
 }
 .post-wrapper .user-name {
   margin-top: 1rem;
+}
+.post-wrapper .like-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-top: 0.5rem;
+}
+.post-wrapper .like-wrapper .like-btn {
+  margin-right: 0.5rem;
+}
+.post-wrapper .like-wrapper .like-btn::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "";
+  color: #535252;
+}
+.post-wrapper .like-wrapper .like-btn.is-selected::before {
+  font-weight: 900;
+  color: #e0542e;
 }
 .post-wrapper .post-btn-wrapper {
   margin-top: 1rem;
