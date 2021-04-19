@@ -13,7 +13,7 @@ module.exports = {
             },
             content: {
                 type: Sequelize.STRING
-            },
+            },  
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
@@ -27,7 +27,7 @@ module.exports = {
                 references: { model: 'Users', key: 'id' },
                 onUpdate: 'cascade',
                 onDelete: 'cascade'
-            }
+            },
         });
     },
     down: async(queryInterface, Sequelize) => {

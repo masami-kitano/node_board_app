@@ -2,11 +2,33 @@
 
 const Post = require('../models').Post;
 const User = require('../models').User;
+const Favorite = require('../models').Favorite;
 
 module.exports = {
     index: async (req, res, next) => {
         const allPosts = await Post.findAll({ include: User });
         res.locals.posts = allPosts;
+        next();
+    },
+    favorite: async (req, res, next) => {
+        const favorites = await Favorite.findAll({
+            where: { UserId: req.session.userId },
+            include: Post
+        });
+        const favoritesId = [];
+        favorites.forEach(favorite => {
+            favoritesId.push(favorite.dataValues.PostId);
+        });
+        res.locals.favoritesId = favoritesId;
+        next();
+    },
+    favoriteCount: async (req, res, next) => {
+        const allFavorites = await Favorite.findAll();
+        const favoriteCountIds = [];
+        allFavorites.forEach(favorite => {
+            favoriteCountIds.push(favorite.dataValues.PostId);
+        });
+        res.locals.favoriteCountIds = favoriteCountIds;
         next();
     },
     indexView: (req, res) => {
@@ -36,8 +58,8 @@ module.exports = {
     edit: async (req, res) => {
         const postId = req.params.id;
         const currentPost = await Post.findOne({ where: { id: postId } });
-        if ( currentPost.UserId === req.session.userId) {
-            res.render('posts/edit', { title: '投稿編集', currentPost: currentPost } );
+        if (currentPost.UserId === req.session.userId) {
+            res.render('posts/edit', { title: '投稿編集', currentPost: currentPost });
         } else {
             res.redirect('/posts/');
         }
@@ -49,10 +71,7 @@ module.exports = {
             content: req.body.content,
         };
         try {
-            const post = await Post.update(
-                { title: updatePost.title, content: updatePost.content },
-                { where: { id: postId } }
-            );
+            const post = await Post.update({ title: updatePost.title, content: updatePost.content }, { where: { id: postId } });
             res.redirect('/posts/');
         } catch (error) {
             console.log(error);
@@ -62,7 +81,7 @@ module.exports = {
     delete: async (req, res, next) => {
         const postId = req.params.id;
         const currentPost = await Post.findOne({ where: { id: postId } });
-        if ( currentPost.UserId === req.session.userId ) {
+        if (currentPost.UserId === req.session.userId) {
             currentPost.destroy();
             res.redirect('/posts/');
         } else {

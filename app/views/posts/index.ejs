@@ -5,19 +5,38 @@
             <div class="post-title"><%= post.title %></div>
             <div class="post-content"><%= post.content %></div>
             <div class="user-name">投稿者：<%= post.User.username %></div>
+            <div class="like-wrapper">
+                <% if ( favoritesId.includes(post.id) ) { %>
+                    <form action="/favorites/delete?_method=DELETE" method="post">
+                        <input type="hidden" name="userId" value="<%= locals.userId %>">
+                        <input type="hidden" name="postId" value="<%= post.id %>">
+                        <button type="submit" class="like-btn is-selected"></button>
+                    </form>
+                <% } else { %>
+                    <form action="/favorites/create" method="post">
+                        <input type="hidden" name="userId" value="<%= locals.userId %>">
+                        <input type="hidden" name="postId" value="<%= post.id %>">
+                        <button type="submit" class="like-btn"></button>
+                    </form>
+                <% } %>
+                <div class="like-count">
+                    <% let favoriteCount = 0; %>
+                    <% favoriteCountIds.forEach(favoriteCountId => { %>
+                        <% 
+                        if ( post.id === favoriteCountId ) {
+                            favoriteCount++
+                        } 
+                        %>
+                    <% }); %>
+                    <%= favoriteCount %>
+                </div>
+            </div>
             <% if ( post.UserId === locals.userId ) { %>
                 <div class="post-btn-wrapper">
                     <a href="<%= `${post.id}/edit` %>" class="post-edit-btn">編集</a>
-                    <a href="<%= `${post.id}/delete?_method=DELETE` %>" id="post-delete-btn" class="post-delete-btn">削除</a>
+                    <a href="<%= `${post.id}/delete?_method=DELETE` %>" class="post-delete-btn" onclick="return confirm('本当に削除してもよろしいでしょうか？');">削除</a>
                 </div>
             <% } %>
         </div>
     <% }); %>
 </div>
-
-<script>
-    const postDeleteBtn = document.getElementById('post-delete-btn');
-    postDeleteBtn.onclick = () => {
-        return confirm('本当に削除してもよろしいでしょうか？');
-    };
-</script>
