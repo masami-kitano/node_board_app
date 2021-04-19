@@ -3,9 +3,9 @@
 const express = require('express');
 const router = express.Router();
 const usersController = require('../controllers/usersController');
-const userValidator = require('../lib/userValidator');
-const auth = require('../lib/jwt');
-const { authenticate } = require('../lib/passport');
+const userValidator = require('../libs/userValidator');
+const auth = require('../libs/jwt');
+const { authenticate } = require('../libs/passport');
 
 // 新規会員登録画面の表示
 router.get('/register', usersController.register);

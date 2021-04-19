@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  mydb:
+  mysqldb:
     image: mysql:latest
     environment:
       - TZ=Asia/Tokyo
@@ -9,7 +9,7 @@ services:
       - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: node_db
+      MYSQL_DATABASE: database_development
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
@@ -20,6 +20,8 @@ services:
     build:
       context: app
       dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
     ports:
       - 3000:3000
     volumes:

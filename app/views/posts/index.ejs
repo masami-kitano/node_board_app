@@ -1,0 +1,23 @@
+<div class="container">
+    <h2><%= title %></h2>
+    <% posts.forEach(post => { %>
+        <div class="post-wrapper">
+            <div class="post-title"><%= post.title %></div>
+            <div class="post-content"><%= post.content %></div>
+            <div class="user-name">投稿者：<%= post.User.username %></div>
+            <% if ( post.UserId === locals.userId ) { %>
+                <div class="post-btn-wrapper">
+                    <a href="<%= `${post.id}/edit` %>" class="post-edit-btn">編集</a>
+                    <a href="<%= `${post.id}/delete?_method=DELETE` %>" id="post-delete-btn" class="post-delete-btn">削除</a>
+                </div>
+            <% } %>
+        </div>
+    <% }); %>
+</div>
+
+<script>
+    const postDeleteBtn = document.getElementById('post-delete-btn');
+    postDeleteBtn.onclick = () => {
+        return confirm('本当に削除してもよろしいでしょうか？');
+    };
+</script>

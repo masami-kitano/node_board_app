@@ -1,0 +1,26 @@
+<div class="post-new">
+    <div class="post-new-inner">
+        <div class="form post-new-form">
+            <% const errorMsgs = locals.errorMsg || {} %>
+            <% if ( locals.errorMsg ) { %>
+                <div class="error-msg">
+                    <% errorMsgs.forEach( errorMsg => { %>
+                        <p><%= errorMsg %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+            <% const currentPost = locals.currentPost || {} %>
+            <form action="/posts/create" method="post">
+                <div class="form-item">
+                    <label>タイトル</label>
+                    <input type="text" name="title" value="<%= currentPost.title %>">
+                </div>
+                <div class="form-item">
+                    <label>コンテンツ</label>
+                    <textarea name="content" cols="30" rows="10"><% currentPost.content %></textarea>
+                </div>
+                <input type="submit" value="新規投稿">
+            </form>
+        </div>
+    </div>
+</div>

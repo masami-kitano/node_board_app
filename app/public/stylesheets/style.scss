@@ -39,7 +39,7 @@
             display: block;
             margin-bottom: .625rem;
         }
-        input {
+        input, textarea {
             width: 100%;
             padding: .5rem;
             border: 1px solid #333;
@@ -71,5 +71,56 @@
 
     p {
         line-height: 1.5;
+    }
+}
+
+.post-wrapper {
+    border: 1px solid rgb(204, 199, 199);
+    color: #333;
+    margin: 1rem 0;
+    padding: 1rem;
+    text-align: left;
+
+    .post-title {
+        font-size: 1.25rem;
+    }
+
+    .post-content {
+        font-size: .875rem;
+        margin-top: 1rem;
+    }
+
+    .user-name {
+        margin-top: 1rem;
+    }
+
+    .post-btn-wrapper {
+        margin-top: 1rem;
+        color: #fff;
+        .post-btn {
+            border-radius: 1rem;
+            font-size: .875rem;
+            padding: .5rem .7rem;
+        }
+        .post-edit-btn {
+            background-color: #579fdd;
+            border: 1px solid #579fdd;
+            @extend .post-btn;
+            &:hover {
+                transition: background-color 0.3s ease;
+                background-color: #fff;
+                color: #579fdd;
+            }
+        }
+        .post-delete-btn {
+            background-color: rgb(209, 115, 115);
+            border: 1px solid rgb(209, 115, 115);
+            @extend .post-btn;
+            &:hover {
+                transition: background-color 0.3s ease;
+                background-color: #fff;
+                color: rgb(209, 115, 115);
+            }
+        }
     }
 }
