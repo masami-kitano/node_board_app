@@ -16,18 +16,14 @@ module.exports = {
             include: Post
         });
         const favoritesId = [];
-        favorites.forEach(favorite => {
-            favoritesId.push(favorite.dataValues.PostId);
-        });
+        favorites.map(favorite => favoritesId.push(favorite.dataValues.PostId));
         res.locals.favoritesId = favoritesId;
         next();
     },
     favoriteCount: async (req, res, next) => {
         const allFavorites = await Favorite.findAll();
         const favoriteCountIds = [];
-        allFavorites.forEach(favorite => {
-            favoriteCountIds.push(favorite.dataValues.PostId);
-        });
+        allFavorites.map(favorite => favoriteCountIds.push(favorite.dataValues.PostId));
         res.locals.favoriteCountIds = favoriteCountIds;
         next();
     },
