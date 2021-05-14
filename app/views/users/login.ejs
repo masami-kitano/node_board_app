@@ -1,22 +1,22 @@
 <div class="login">
-    <div class="login-inner">
-        <div class="form login-form">
-            <form action="/users/login" method="post">
-                <div class="form-item">
-                    <label>email</label>
-                    <input type="email" name="email" autofocus required>
-                </div>
-                <div class="form-item">
-                    <label>password</label>
-                    <input type="password" name="password" required>
-                </div>
-                <input type="submit" value="login">
-                <% if( messages.error ) { %>
-                    <div class="error-msg">
-                      <%= messages.error %>
-                    </div>
-                <% } %>
-            </form>
+  <div class="login-inner">
+    <div class="form login-form">
+      <form action="/users/login" method="post">
+        <div class="form-item">
+          <label>email</label>
+          <input type="email" name="email" autofocus required>
         </div>
+        <div class="form-item">
+          <label>password</label>
+          <input type="password" name="password" required>
+        </div>
+        <input type="submit" value="login">
+        <% if( messages.error ) { %>
+          <div class="error-msg">
+            <%= messages.error %>
+          </div>
+        <% } %>
+      </form>
     </div>
+  </div>
 </div>

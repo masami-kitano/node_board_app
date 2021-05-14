@@ -1,7 +1,7 @@
 'use strict';
 
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
+  require('dotenv').config();
 }
 
 const createError = require('http-errors');
@@ -19,9 +19,9 @@ const indexRouter = require('./routes/index');
 app.set('view engine', 'ejs');
 
 app.use(
-    methodOverride('_method', {
-        methods: ['POST', 'GET']
-    })
+  methodOverride('_method', {
+    methods: ['POST', 'GET']
+  })
 );
 
 app.use(layouts);
@@ -33,26 +33,26 @@ app.use(cookieParser());
 app.use(express.static('public'));
 // セッション
 app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-        cookie: { maxAge: 1000 * 60 * 30 },
-    })
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 30 },
+  })
 );
 app.use(...accountControl.initialize());
 app.use('/', indexRouter);
 
 app.use((req, res, next) => {
-    next(createError(404));
+  next(createError(404));
 });
 
 app.use((err, req, res, next) => {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    res.status(err.status || 500);
-    res.render('error');
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 module.exports = app;
